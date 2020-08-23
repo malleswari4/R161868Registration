@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    TextView text_name,text_mail,text_pass,text_phone,text_roll,text_gender;
+    TextView text_name,text_mail,text_pass,text_phone,text_roll,text_gender,text_branch;
 
 
     @Override
@@ -21,6 +21,7 @@ public class MainActivity2 extends AppCompatActivity {
         text_phone=findViewById(R.id.tv_phone);
         text_roll=findViewById(R.id.tv_roll);
         text_gender=findViewById(R.id.tv_gender);
+        text_branch=findViewById(R.id.tv_branch);
         Intent intent=getIntent();
         String na=intent.getStringExtra("name");
         String roll_num=intent.getStringExtra("rollnum");
@@ -28,12 +29,14 @@ public class MainActivity2 extends AppCompatActivity {
         String mail_id=intent.getStringExtra("email");
         String password=intent.getStringExtra("password");
         String gen_id=intent.getStringExtra("gen");
+        String regi_branch=intent.getStringExtra("branches");
         text_name.setText(na);
         text_mail.setText(mail_id);
         text_roll.setText(roll_num);
         text_phone.setText(phone_num);
         text_pass.setText(password);
         text_gender.setText(gen_id);
+        text_branch.setText(regi_branch);
 
     }
 }

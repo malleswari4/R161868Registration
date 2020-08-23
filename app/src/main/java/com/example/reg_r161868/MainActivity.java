@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity  {
     RadioGroup rg;
     Spinner sp_branch;
     String[] branches = {"CSE", "ECE", "Civil", "Mechanical"};
-    String reg_name,reg_roll,reg_mail,reg_phone,reg_password,gen;
+    String reg_name,reg_roll,reg_mail,reg_phone,reg_password,gen,br;
     Button btn;
 
     @Override
@@ -54,9 +54,22 @@ public class MainActivity extends AppCompatActivity  {
                 intent.putExtra("phonenum",reg_phone);
                 intent.putExtra("password",reg_password);
                 intent.putExtra("gender",gen);
+                intent.putExtra("branches",br);
             }
         });
+        sp_branch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                TextView t = new TextView(view);
+                br=t.getText().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
