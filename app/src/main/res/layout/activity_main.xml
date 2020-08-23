@@ -56,6 +56,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="5dp"
+        android:onClick="genderselected"
         >
         <RadioButton
             android:id="@+id/rb1"
@@ -63,14 +64,14 @@
             android:layout_height="wrap_content"
             android:text="male"
             android:textSize="15sp"
-            android:onClick="genderselected"/>
+            />
         <RadioButton
             android:id="@+id/rb2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="female"
             android:textSize="15sp"
-            android:onClick="genderselected"/>
+            />
     </RadioGroup>
     <TextView
         android:layout_width="wrap_content"
@@ -97,5 +98,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
-        android:text="Register"/>
+        android:text="Register"
+        android:onClick="login"/>
 </LinearLayout>

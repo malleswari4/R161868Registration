@@ -15,14 +15,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity{
 
 
     EditText et1_name, et2_roll, et3_mail, et4_phone, et5_password;
     RadioGroup rg;
     Spinner sp_branch;
     String[] branches = {"CSE", "ECE", "Civil", "Mechanical"};
-    String reg_name,reg_roll,reg_mail,reg_phone,reg_password,gen,br;
+    String reg_name,reg_roll,reg_mail,reg_phone,reg_password,gen;
+    String br;
     Button btn;
 
     @Override
@@ -39,30 +40,12 @@ public class MainActivity extends AppCompatActivity  {
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, branches);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         sp_branch.setAdapter(arrayAdapter);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),MainActivity2.class);
-                reg_name= String.valueOf(et1_name.getText());
-                reg_mail=String.valueOf(et3_mail.getText());
-                reg_password=String.valueOf(et5_password.getText());
-                reg_phone=String.valueOf(et4_phone.getText());
-                reg_roll=String.valueOf(et2_roll.getText());
-                intent.putExtra("name",reg_name);
-                intent.putExtra("rollnum",reg_roll);
-                intent.putExtra("email",reg_mail);
-                intent.putExtra("phonenum",reg_phone);
-                intent.putExtra("password",reg_password);
-                intent.putExtra("gender",gen);
-                intent.putExtra("branches",br);
-            }
-        });
+//        btn.setOnClickListener(this);
         sp_branch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                TextView t = new TextView(view);
-                br=t.getText().toString();
+                br=branches[position];
             }
 
             @Override
@@ -90,4 +73,41 @@ public class MainActivity extends AppCompatActivity  {
             }
         }
     }
+
+    public void login(View view) {
+
+        Intent intent=new Intent(this,MainActivity2.class);
+        reg_name= String.valueOf(et1_name.getText());
+        reg_mail=String.valueOf(et3_mail.getText());
+        reg_password=String.valueOf(et5_password.getText());
+        reg_phone=String.valueOf(et4_phone.getText());
+        reg_roll=String.valueOf(et2_roll.getText());
+        intent.putExtra("name",reg_name);
+        intent.putExtra("rollnum",reg_roll);
+        intent.putExtra("email",reg_mail);
+        intent.putExtra("phonenum",reg_phone);
+        intent.putExtra("password",reg_password);
+        intent.putExtra("gender",gen);
+        intent.putExtra("branches",br);
+    }
+
+//    @Override
+//    public void onClick(View v) {
+//
+//
+//        Intent intent=new Intent(this,MainActivity2.class);
+//        reg_name= String.valueOf(et1_name.getText());
+//        reg_mail=String.valueOf(et3_mail.getText());
+//        reg_password=String.valueOf(et5_password.getText());
+//        reg_phone=String.valueOf(et4_phone.getText());
+//        reg_roll=String.valueOf(et2_roll.getText());
+//        intent.putExtra("name",reg_name);
+//        intent.putExtra("rollnum",reg_roll);
+//        intent.putExtra("email",reg_mail);
+//        intent.putExtra("phonenum",reg_phone);
+//        intent.putExtra("password",reg_password);
+//        intent.putExtra("gender",gen);
+//        intent.putExtra("branches",br);
+//
+//    }
 }

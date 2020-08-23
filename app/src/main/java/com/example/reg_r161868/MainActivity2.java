@@ -15,6 +15,7 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         text_name=findViewById(R.id.tv_name);
         text_mail=findViewById(R.id.tv_mail);
         text_pass=findViewById(R.id.tv_password);
