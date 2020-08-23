@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity  {
     RadioGroup rg;
     Spinner sp_branch;
     String[] branches = {"CSE", "ECE", "Civil", "Mechanical"};
-    String reg_name,reg_roll,reg_mail,reg_phone,reg_password;
+    String reg_name,reg_roll,reg_mail,reg_phone,reg_password,gen;
     Button btn;
 
     @Override
@@ -35,10 +35,10 @@ public class MainActivity extends AppCompatActivity  {
         et4_phone = findViewById(R.id.phone);
         et5_password = findViewById(R.id.password);
         sp_branch = findViewById(R.id.spin);
+        btn=findViewById(R.id.submit);
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, branches);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         sp_branch.setAdapter(arrayAdapter);
-        btn=findViewById(R.id.submit);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity  {
                 intent.putExtra("email",reg_mail);
                 intent.putExtra("phonenum",reg_phone);
                 intent.putExtra("password",reg_password);
-
+                intent.putExtra("gender",gen);
             }
         });
 
@@ -61,6 +61,20 @@ public class MainActivity extends AppCompatActivity  {
     }
 
 
+    public void genderselected(View view) {
 
-
+        int selected=rg.getCheckedRadioButtonId();
+        if(selected!=-1)
+        {
+            switch (selected)
+            {
+                case R.id.rb1:
+                    gen="M";
+                    break;
+                case R.id.rb2:
+                    gen="F";
+                    break;
+            }
+        }
+    }
 }
