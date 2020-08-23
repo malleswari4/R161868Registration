@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 public class MainActivity2 extends AppCompatActivity {
 
     TextView text_name,text_mail,text_pass,text_phone,text_roll,text_gender,text_branch;
@@ -15,7 +17,7 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         text_name=findViewById(R.id.tv_name);
         text_mail=findViewById(R.id.tv_mail);
         text_pass=findViewById(R.id.tv_password);
@@ -29,7 +31,7 @@ public class MainActivity2 extends AppCompatActivity {
         String phone_num=intent.getStringExtra("phonenum");
         String mail_id=intent.getStringExtra("email");
         String password=intent.getStringExtra("password");
-        String gen_id=intent.getStringExtra("gen");
+        String gen_id=intent.getStringExtra("i_gender");
         String regi_branch=intent.getStringExtra("branches");
         text_name.setText(na);
         text_mail.setText(mail_id);

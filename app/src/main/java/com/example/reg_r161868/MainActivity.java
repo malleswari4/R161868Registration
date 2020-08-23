@@ -10,12 +10,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity  {
 
 
     EditText et1_name, et2_roll, et3_mail, et4_phone, et5_password;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity{
         et4_phone = findViewById(R.id.phone);
         et5_password = findViewById(R.id.password);
         sp_branch = findViewById(R.id.spin);
-        btn=findViewById(R.id.submit);
+//        btn=findViewById(R.id.submit);
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, branches);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         sp_branch.setAdapter(arrayAdapter);
@@ -57,26 +58,9 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-    public void genderselected(View view) {
 
-        int selected=rg.getCheckedRadioButtonId();
-        if(selected!=-1)
-        {
-            switch (selected)
-            {
-                case R.id.rb1:
-                    gen="M";
-                    break;
-                case R.id.rb2:
-                    gen="F";
-                    break;
-            }
-        }
-    }
-
-    public void login(View view) {
-
-        Intent intent=new Intent(this,MainActivity2.class);
+    public void register(View view) {
+        Intent intent=new Intent(getApplicationContext(),MainActivity2.class);
         reg_name= String.valueOf(et1_name.getText());
         reg_mail=String.valueOf(et3_mail.getText());
         reg_password=String.valueOf(et5_password.getText());
@@ -87,27 +71,23 @@ public class MainActivity extends AppCompatActivity{
         intent.putExtra("email",reg_mail);
         intent.putExtra("phonenum",reg_phone);
         intent.putExtra("password",reg_password);
-        intent.putExtra("gender",gen);
+        intent.putExtra("i_gender",gen);
         intent.putExtra("branches",br);
+        startActivity(intent);
     }
 
-//    @Override
-//    public void onClick(View v) {
-//
-//
-//        Intent intent=new Intent(this,MainActivity2.class);
-//        reg_name= String.valueOf(et1_name.getText());
-//        reg_mail=String.valueOf(et3_mail.getText());
-//        reg_password=String.valueOf(et5_password.getText());
-//        reg_phone=String.valueOf(et4_phone.getText());
-//        reg_roll=String.valueOf(et2_roll.getText());
-//        intent.putExtra("name",reg_name);
-//        intent.putExtra("rollnum",reg_roll);
-//        intent.putExtra("email",reg_mail);
-//        intent.putExtra("phonenum",reg_phone);
-//        intent.putExtra("password",reg_password);
-//        intent.putExtra("gender",gen);
-//        intent.putExtra("branches",br);
-//
-//    }
+
+    public void genderselected(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        switch (view.getId()) {
+            case R.id.rb1:
+                if (checked)
+                    gen="male";
+                    break;
+            case R.id.rb2:
+                if (checked)
+                    gen="female";
+                    break;
+        }
+    }
 }
